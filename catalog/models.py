@@ -1,3 +1,17 @@
 from django.db import models
 
-# Create your models here.
+class Product(models.Model):
+
+    def __str__(self):
+        pass
+
+    class Meta:
+        pass
+
+class Category(models.Model):
+
+    def __str__(self):
+        pass
+
+    class Meta:
+        pass
