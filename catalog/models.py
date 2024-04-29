@@ -11,7 +11,6 @@ class Product(models.Model):
     price = models.IntegerField (verbose_name='Цена за покупку', null=True)
     time_create = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='Дата создания', null=True)
     time_update = models.DateTimeField(auto_now=True, blank=True, verbose_name='Дата последнего изменения', null=True)
-    manufactured_at = models.TextField(max_length=100, verbose_name='Модель продукта', null=True)
 
     def __str__(self):
         return f'{self.name} {self.category}'
