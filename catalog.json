@@ -1,0 +1,96 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Коленвал",
+      "description": "Коленчатый вал",
+      "images": "",
+      "category": 6,
+      "price": 175000,
+      "time_create": "2024-04-30T15:51:07.879Z",
+      "time_update": "2024-04-30T15:51:07.879Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Распредвал",
+      "description": "Распределитльный вал впуска и выпуска",
+      "images": "",
+      "category": 6,
+      "price": 125000,
+      "time_create": "2024-04-30T15:52:07.484Z",
+      "time_update": "2024-04-30T15:52:07.484Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "Шестерня(1-2)",
+      "description": "Шестерня первой и второй передачи",
+      "images": "",
+      "category": 7,
+      "price": 15000,
+      "time_create": "2024-04-30T15:54:19.014Z",
+      "time_update": "2024-04-30T15:54:19.014Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Корпус",
+      "description": "Центральный корпус КПП",
+      "images": "",
+      "category": 7,
+      "price": 150000,
+      "time_create": "2024-04-30T15:55:00.804Z",
+      "time_update": "2024-04-30T15:55:00.804Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "name": "Фланец",
+      "description": "Выходной фланец КПП(хвостовик)",
+      "images": "",
+      "category": 7,
+      "price": 25000,
+      "time_create": "2024-04-30T15:55:42.003Z",
+      "time_update": "2024-04-30T15:55:42.003Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "name": "Сальник з.к.",
+      "description": "Задний сальник коленвала",
+      "images": "",
+      "category": 6,
+      "price": 4000,
+      "time_create": "2024-04-30T15:56:44.542Z",
+      "time_update": "2024-04-30T15:56:44.542Z"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 6,
+    "fields": {
+      "name": "ДВС",
+      "description": "Двигатель внутренного сгорания"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 7,
+    "fields": {
+      "name": "КПП",
+      "description": "Коробка переменных передач"
+    }
+  }
+]
