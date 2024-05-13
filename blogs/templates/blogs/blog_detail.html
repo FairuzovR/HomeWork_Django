@@ -6,7 +6,9 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{ product.images | media_filter }}">
+            {% if object.images %}
+              <img src="{{ object.images | media_filter }}">
+            {% endif %}
             <div class="card-body">
               <p class="card-text">Тема блога: "{{ object.title }}" ({{ object.slug }})</p>
               <p class="card-text">Описание: {{ object.description }}</p>
