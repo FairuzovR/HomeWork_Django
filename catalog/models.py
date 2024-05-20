@@ -33,3 +33,19 @@ class Category(models.Model):
         ordering = ['name']
 
 
+class Version(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, **NULLABLE, related_name='products',
+                                 verbose_name='Продукт')
+    number_version = models.IntegerField (verbose_name='Номер версии')
+    name = models.CharField(max_length=100, verbose_name='Название версии')
+    current_version = models.BooleanField(default=True, verbose_name='Текущая версия')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версии'
+        ordering = ['name']
+
+

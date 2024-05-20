@@ -1,19 +1,33 @@
 {% extends 'catalog/products.html' %}
 {% load my_tags %}
 {% block content %}
+<div class="col-1 mb-10">
+  <a class="btn btn-primary" href="{% url 'catalog:create' %}">Добавить запись</a>
+</div>
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for product in object_list %}
+        {% for object in object_list %}
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{ product.images | media_filter }}">
+            <img src="{{ object.images | media_filter }}">
             <div class="card-body">
-              <p class="card-text">{{ product.name }}</p>
-              <p class="card-text">Описание: {{ product.description|truncatechars:100 }}</p>
+              <p class="card-text">{{ object.name }}</p>
+              <p class="card-text">Описание: {{ object.description|truncatechars:100 }}</p>
+              {% if object.version %}
+              <p class="card-text">Версия: {{ object.version }}</p>
+              {% endif %}
+<!--                {% for Version in object.name %}-->
+<!--                <li> {{ object.version }} </li>-->
+<!--                {% endfor %}-->
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}" role="button">Подробности</a>
+                 <a href="{% url 'catalog:view' object.pk %}"
+                      class="btn btn-sm btn-outline-secondary">View</a>
+                   <a href="{% url 'catalog:edit' object.pk %}"
+                      class="btn btn-sm btn-outline-secondary">Edit</a>
+                   <a href="{% url 'catalog:delete' object.pk %}"
+                      class="btn btn-sm btn-outline-danger">Delete</a>
                 </div>
                 <small class="text-body-secondary">9 mins</small>
               </div>
