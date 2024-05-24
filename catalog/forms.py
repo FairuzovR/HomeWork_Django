@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from catalog.models import Product
+from catalog.models import Product, Version
 from django.forms.fields import BooleanField
 from django.core.exceptions import ValidationError
 
@@ -19,6 +19,7 @@ class ProductForm(StyleForMexin, ModelForm):
         model = Product
         exclude = "__all__"
 
+
     def clean_name(self):
         name = self.cleaned_data['name']
         for error_world in error_worlds:
@@ -35,3 +36,8 @@ class ProductForm(StyleForMexin, ModelForm):
 
         return description
 
+
+class VersionForm(ModelForm):
+    class Meta:
+        model = Version
+        fields = "__all__"

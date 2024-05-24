@@ -2,9 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from catalog.models import Product, Version
 from django.views.generic import (
     CreateView, ListView, DetailView, DetailView, UpdateView, DeleteView)
-from catalog.forms import ProductForm
+from catalog.forms import ProductForm, VersionForm
 from django.urls import reverse_lazy, reverse
 from pytils.translit import slugify
+from django.forms.models import inlineformset_factory
 
 # Create your views here.
 
@@ -31,7 +32,6 @@ class ProductsCreateView(CreateView):
 class ProductsUpdateView(UpdateView):
     model = Product
     form_class = ProductForm
-    # success_url = reverse_lazy('blogs:list')
 
     def form_valid(self, form):
         if form.is_valid():
@@ -40,6 +40,26 @@ class ProductsUpdateView(UpdateView):
             new_product.save()
 
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        ProductFormset = inlineformset_factory(Product, Version, VersionForm, extra=1)
+        if self.request.method == 'POST':
+            context["formset"] = ProductFormset(self.request.POST, instance=self.object)
+        else:
+            context["formset"] = ProductFormset(instance=self.object)
+        return context
+
+    def form_valid(self, form):
+        context =  self.get_context_data()
+        formset = context['formset']
+        if form.is_valid() and formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return super().form_valid(form)
+        else:
+            return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
     def get_success_url(self):
         return reverse('catalog:view', args=[self.kwargs.get('pk')])
